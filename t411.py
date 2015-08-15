@@ -35,6 +35,8 @@ class T411(object):
         defined use token stored in user file
         """
 
+        self.username = username
+        self.password = password
         try :
             with open(USER_CREDENTIALS_FILE) as user_cred_file:
                 self.user_credentials = loads(user_cred_file.read())
@@ -49,15 +51,17 @@ class T411(object):
         except IOError as e:
             # we have to ask the user for its credentials and get
             # the token from the API
-            while True:
-                user = raw_input('Please enter username: ')
-                password = getpass('Please enter password: ')
-                try:
-                    self._auth(user, password)
-                except T411Exception as e:
-                    logging.error('Error while trying identification as %s: %s' %(user, e.message))
-                else:
-                    break
+            print('Logging you to T411 with username: \'%s\' based on config file' % (self.username))
+            #while True:
+            #    user = raw_input('Please enter username: ')
+            #    password = getpass('Please enter password: ')
+            try:
+                self._auth(self.username, self.password)
+            except T411Exception as e:
+                logging.error('Error while trying identification as %s: %s' %(user, e.message))
+            #    else:
+            #        break
+            print('Logging success')
         except T411Exception as e:
             raise T411Exception(e.message)
         except Exception as e:
