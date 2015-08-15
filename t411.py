@@ -30,7 +30,7 @@ class T411Exception(BaseException):
 class T411(object):
     """ Base class for t411 interface """
 
-    def __init__(self) :
+    def __init__(self, username, password) :
         """ Get user credentials and authentificate it, if any credentials
         defined use token stored in user file
         """

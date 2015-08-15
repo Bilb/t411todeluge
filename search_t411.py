@@ -15,9 +15,12 @@ class search_t411(object):
     """
 
     def __init__(self,
-            title="", season=None, episode=None, seeders_min=0):
+            username, password, title="", season=None, episode=None, seeders_min=0):
 
+        self.username = username
+        self.password = password
         self.title = title
+
         self.season = season
         self.episode = episode
         self.seeders_min = seeders_min
@@ -40,7 +43,7 @@ class search_t411(object):
         Connect to the t411 server
         """
         try:
-            src = t411.T411()
+            src = t411.T411(self.username, self.password)
         except Exception as e:
             logging.error("Error while trying connection to t411... %s" % e.message)
             sys.exit(1)
