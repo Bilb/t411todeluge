@@ -5,7 +5,7 @@
 # Search and download torrents from t411 and upload them to a deluge daemon
 #
 # Distributed under the MIT license (MIT)
-__appname__ = "t411ToDeluge"
+__appname__ = "T411ToDeluge"
 __version__ = "0.1"
 __author__ = "Audric Ackermann <audric.bilb@gmail.com>"
 __license__ = "MIT"
