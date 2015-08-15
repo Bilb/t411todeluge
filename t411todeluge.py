@@ -10,7 +10,7 @@ __version__ = "0.1"
 __author__ = "Audric Ackermann <audric.bilb@gmail.com>"
 __license__ = "MIT"
 
-import urllib2, requests, os, shutil, base64, ConfigParser, argparse, t411, search_t411, pprint
+import os, sys, base64, ConfigParser, argparse, t411, search_t411, pprint
 
 from deluge_client import DelugeRPCClient
 
@@ -124,12 +124,16 @@ class T411ToDeluge(object):
     def parseConfig(self, filename='config.ini'):
         config = ConfigParser.ConfigParser()
         config.read(filename)
-        self.hostDeluge = config.get('DELUGE','host')
-        self.portDeluge = int(config.get('DELUGE', 'port'))
-        self.usernameDeluge = config.get('DELUGE', 'username')
-        self.passwordDeluge = config.get('DELUGE', 'password')
-        self.usernameT411 = config.get('T411', 'username')
-        self.passwordT411 = config.get('T411', 'password')
+        try:
+            self.hostDeluge = config.get('DELUGE','host')
+            self.portDeluge = int(config.get('DELUGE', 'port'))
+            self.usernameDeluge = config.get('DELUGE', 'username')
+            self.passwordDeluge = config.get('DELUGE', 'password')
+            self.usernameT411 = config.get('T411', 'username')
+            self.passwordT411 = config.get('T411', 'password')
+        except:
+            print("You have to copy and paste to 'config.ini' the 'config.ini.default' and edit it !")
+            sys.exit(1)
 
 
 if __name__ == '__main__':

@@ -1,7 +1,6 @@
 #! /usr/bin/env python3
 # -*- coding: UTF-8 -*-
-from __future__ import print_function
-import os, sys, logging, requests, base64
+import logging
 
 
 import t411, re
