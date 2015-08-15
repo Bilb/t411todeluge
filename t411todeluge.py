@@ -56,6 +56,9 @@ def uploadTorrent(filename, config):
     filedump = base64.encodestring(f.read())
     f.close()
     client.call('core.add_torrent_file', filename, filedump, {}, )
+    bytes_available = client.call('core.get_free_space')
+    gig_available = bytes_available/(1024.*1024*1024)
+    print('There is %.1f GB available on the host \'%s\'.' % (gig_available, host))
 
 
 def removeTorrentFile(filename):
