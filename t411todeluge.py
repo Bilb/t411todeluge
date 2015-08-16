@@ -16,13 +16,6 @@ from deluge_client import DelugeRPCClient
 
 
 
-def printSyntax(parser):
-    """
-    Display the syntax of the command line
-    """
-    print(parser.print_help())
-
-
 def printVersion():
     """
     Display the current software version
@@ -46,7 +39,8 @@ class T411ToDeluge(object):
             self.printVersion()
 
         if not args.title:
-            self.printSyntax(parser)
+            parser.print_help()
+            sys.exit(1)
 
         if args.torrent_id is not None:
             torrent_id = args.torrent_id[0]
