@@ -126,7 +126,7 @@ class T411ToDeluge(object):
             self.usernameT411 = config.get('T411', 'username')
             self.passwordT411 = config.get('T411', 'password')
         except:
-            print("You have to copy and paste to 'config.ini' the 'config.ini.default' and edit it !")
+            print("You have to copy and paste to 'config.ini' the 'config.default.ini' and edit it !")
             sys.exit(1)
 
 
