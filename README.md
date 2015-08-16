@@ -57,3 +57,10 @@ And to upload a torrent to your deluge server, just add:
 For example:
 
       ./t411todeluge.py -i 5339837
+
+
+Troubleshoot
+------------
+
+In case of your t411 token being invalid, just remove the user.access file in the root directory, so it get a new one from t411.
+It's one thing to improve later (reuse username & password when token is invalid to get a new one automatically)
